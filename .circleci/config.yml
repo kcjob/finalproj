@@ -11,6 +11,25 @@ jobs:
     steps:
       - run: echo world
 
+  save_doc:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo "hello world" > ~/optput.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - output.txt
+
+  print_output_file:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: cat ~/output.txt
+
+
 workflows:
   # Name the workflow "welcome"
   welcome:
@@ -20,5 +39,8 @@ workflows:
       - print_world:
           requires:
             - print_hello
-
+      - save_doc
+      - print_output_file:
+          requires:
+            - save_hello_world_output
 

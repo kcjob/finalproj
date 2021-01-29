@@ -17,7 +17,7 @@ jobs:
     steps:
       - run: echo "hello world" > ~/optput.txt
       - persist_to_workspace:
-          root: ~/
+          root: ~/circleci
           paths:
             - output.txt
 

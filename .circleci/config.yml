@@ -15,9 +15,9 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "hello world" > ~/optput.txt
+      - run: echo "hello world" > ~/circleci/optput.txt
       - persist_to_workspace:
-          root: ~/circleci
+          root: ~/
           paths:
             - output.txt
 

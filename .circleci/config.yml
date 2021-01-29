@@ -42,5 +42,5 @@ workflows:
       - save_doc
       - print_output_file:
           requires:
-            - save_hello_world_output
+            - save_doc
 
